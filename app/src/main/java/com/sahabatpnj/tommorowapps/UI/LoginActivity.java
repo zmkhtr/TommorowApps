@@ -52,7 +52,6 @@ public class LoginActivity extends BaseActivity {
                 } else if (password.isEmpty()){
                     mPassword.setError("Password cannot be empty");
                 } else {
-                    createLoadingDialog("Signing in....");
                     doLogin(email, password);
                 }
             }

@@ -93,17 +93,22 @@ public class AddOrEditNoteActivity extends BaseActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.edit_activity_menu, menu);
+        if (!isAdd){
+            MenuInflater inflater = getMenuInflater();
+            inflater.inflate(R.menu.edit_activity_menu, menu);
+        }
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.itemDelete) {
-           createDialogDelete();
-            return true;
+        if (!isAdd){
+            if (item.getItemId() == R.id.itemDelete) {
+                createDialogDelete();
+                return true;
+            }
         }
+
         return super.onOptionsItemSelected(item);
     }
 

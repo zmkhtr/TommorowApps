@@ -1,15 +1,26 @@
 package com.sahabatpnj.tommorowapps;
 
 import android.app.ProgressDialog;
+import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.view.MenuItem;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
+
+    ProgressDialog progressDialog;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
+        super.onCreate(savedInstanceState, persistentState);
+         progressDialog = new ProgressDialog(this);
+    }
 
     public void createToast(String message){
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
@@ -34,12 +45,5 @@ public abstract class BaseActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void createLoadingDialog(String message){
-        ProgressDialog progressDialog = new ProgressDialog(this);
-        progressDialog.setCancelable(false);
-        progressDialog.setMessage(message);
-        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-        progressDialog.setProgress(0);
-        progressDialog.show();
-    }
+
 }

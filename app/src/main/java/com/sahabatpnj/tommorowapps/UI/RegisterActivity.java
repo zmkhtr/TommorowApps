@@ -60,7 +60,6 @@ public class RegisterActivity extends BaseActivity {
                     mReTypePassword.setError("Re-Type Password cannot be empty");
                 } else {
                     doRegister(name, email, password, reTypePassword);
-                    createLoadingDialog("Registering...");
                 }
             }
         });
